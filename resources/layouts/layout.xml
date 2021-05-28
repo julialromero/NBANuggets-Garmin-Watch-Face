@@ -1,0 +1,5 @@
+<layout id="NuggsWatchFace">
+
+    <label id="TimeLabel" x="right" y="center" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
+    
+</layout>
