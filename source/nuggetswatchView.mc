@@ -41,26 +41,41 @@ class nuggetswatchView extends WatchUi.WatchFace {
         }
         var timeString = Lang.format(timeFormat, [hours, clockTime.min.format("%02d")]);
 
-        // Update the view
-//        
-//        view.setColor(getApp().getProperty("ForegroundColor") as Number);
-//        view.setText("julia"); //timeString
+		
+		// Update the view
         dc.clear();
+        
+        // set text parameters
+        var y = 90;
+        var x = 120;
+        var height = 40;
+        var width = 80;
 
-        // Call the parent onUpdate function to redraw the layout
-        // create a 240x240 layer, at [0,0] offset from the top-left corner of the screen
-//        var backgroundLayer = new WatchUi.Layer({:x=>0, :y=>0, width=>240, height=>240});
-
-        // draw something on the layer
-//        backgroundLayer.getDc()
+        // draw image
         var img = WatchUi.loadResource(Rez.Drawables.ShootingJokic);
         dc.drawBitmap(70, 10, img);
         
-        // Initialize the Time over the animation
-    	//var textLayer = new WatchUi.Layer(options);
-//        var view = View.findDrawableById("TimeLabel") as Text;
-//        view.setText("julia"); //timeString
-        // View.onUpdate(dc);
+        
+        //draw filled rectangle to represent text's color
+		dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_WHITE);
+		dc.fillRectangle(x, y, width, height);
+		
+		
+		//draw filled rectangle to represent water level
+//		dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_BLUE);
+//		dc.fillRectangle(x, y + height/2, width, height/2);
+//		
+//		//create and draw the clipping mask
+		dc.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_BLACK);
+		dc.drawText(x + width/ 2 , y - 5, Graphics.FONT_NUMBER_MEDIUM, timeString, Graphics.TEXT_JUSTIFY_CENTER);
+
+
+
+//        // draw the Time over the image
+//        dc.setColor(Graphics.COLOR_DK_GREEN, Graphics.COLOR_TRANSPARENT);
+//		dc.drawText(170, 100, Graphics.FONT_NUMBER_MEDIUM, timeString, Graphics.TEXT_JUSTIFY_CENTER);
+        
+//        View.onUpdate(dc);
     }
 
     // Called when this View is removed from the screen. Save the
